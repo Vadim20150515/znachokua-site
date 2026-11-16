@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ЗначокUA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f1ff;--card:#fff;--ink:#1b1250;--mut:#5f5a8f;--ac:#6d3cff;--acink:#fff;--pop:#ffcf3f;--line:#ddd3ff;--bad:#c2381f;--ac2:#ff4fa3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0a2a;--card:#1b1445;--ink:#f1eeff;--mut:#b4aee0;--ac:#9a7bff;--acink:#120a38;--line:#33296e;--bad:#ff8f73}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(900px 520px at 8% -10%,rgba(255,79,163,.28),transparent 60%),radial-gradient(800px 520px at 100% 0,rgba(109,60,255,.32),transparent 60%),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.5 "Onest","Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+button,input,textarea,select{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0}
+.logo{font-weight:900;font-size:24px;letter-spacing:-.02em;margin-right:auto}
+.logo b{color:var(--ac)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:#2bb673;animation:pulse 1.8s infinite}
+.dot.off{background:#d9534f;animation:none}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(43,182,115,.0);transform:scale(1.2)}0%{box-shadow:0 0 0 0 rgba(43,182,115,.5)}}
+.btn{border:0;border-radius:12px;padding:11px 18px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;box-shadow:0 6px 16px rgba(109,60,255,.35);transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.96)}
+.btn.o{background:var(--card);border:2px solid var(--ac);color:var(--ink)}
+.btn.s{padding:7px 12px;font-size:14px;border-radius:9px}
+.btn.d{background:transparent;color:var(--bad);border:1px solid var(--bad)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:center;padding:20px 0 34px}
+.hero h1{font-size:clamp(26px,5vw,42px);line-height:1.05;margin:0 0 12px;letter-spacing:-.03em}
+.hero p{color:var(--mut);max-width:34ch;margin:0 0 18px}
+.stage{position:relative;height:260px}
+.pin{position:relative;width:var(--s,96px);height:var(--s,96px);border-radius:50%;display:grid;place-items:center;font-size:calc(var(--s,96px)*.45);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.65),transparent 38%),var(--c,#4b3df2);box-shadow:inset 0 -6px 0 rgba(0,0,0,.18),0 10px 20px rgba(20,24,58,.25);border:4px solid rgba(255,255,255,.9)}
+.pin::after{content:"";position:absolute;bottom:-9px;width:34%;height:10px;border-radius:0 0 10px 10px;background:#b8bccc;z-index:-1}
+.stage .pin{position:absolute;animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-16px) rotate(8deg)}}
+.stage .pin:nth-child(1){left:6%;top:30px;--s:110px}
+.stage .pin:nth-child(2){left:42%;top:0;--s:84px;animation-delay:-1.5s}
+.stage .pin:nth-child(3){left:60%;top:110px;--s:120px;animation-delay:-3s}
+.stage .pin:nth-child(4){left:18%;top:150px;--s:76px;animation-delay:-2s}
+h2{font-size:26px;margin:28px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 14px 14px;text-align:center;transition:transform .25s,box-shadow .25s;animation:in .5s both}
+.prod:hover{transform:translateY(-6px);box-shadow:0 14px 26px rgba(75,61,242,.18)}
+.prod:hover .pin{transform:rotate(-10deg) scale(1.08)}
+.prod .pin{margin:0 auto 14px;transition:transform .3s}
+.prod h3{margin:0;font-size:17px}.price{font-weight:900;font-size:20px;margin:4px 0 10px}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.qty{display:flex;align-items:center;justify-content:center;gap:10px}
+.qty span{min-width:22px;font-weight:700}
+.empty{color:var(--mut);padding:18px;border:2px dashed var(--line);border-radius:14px}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ac);color:var(--acink);display:flex;justify-content:space-between;align-items:center;gap:10px;transform:translateY(110%);transition:transform .35s cubic-bezier(.2,1.2,.4,1);z-index:5;font-weight:700}
+.bar.on{transform:none}.bar .btn{background:var(--pop);color:#14183a}
+footer{margin:40px 0 90px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+dialog{border:0;border-radius:18px;padding:22px;width:min(440px,92vw);background:var(--card);color:var(--ink);animation:pop .3s}
+dialog::backdrop{background:rgba(10,12,40,.55)}
+@keyframes pop{from{opacity:0;transform:scale(.9)}}
+label{display:block;font-weight:700;margin:12px 0 4px;font-size:14px}
+input,textarea,select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.msg{margin-top:10px;color:var(--bad)}.ok{color:var(--ac);font-weight:700}
+.row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.item{padding:12px 0;border-top:1px solid var(--line)}.item:first-child{border-top:0}
+.tag{display:inline-block;padding:1px 10px;border-radius:99px;border:1px solid var(--ac);font-size:13px;margin-left:6px}
+#adm{display:none;padding-bottom:40px;animation:in .4s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.tabs button{white-space:nowrap}
+.tabs .on{background:var(--ac);color:var(--acink);border-color:var(--ac)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:12px}
+.prow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.prow:first-child{border-top:0}.prow .pin{--s:48px;flex:none}.prow .pin::after{display:none}
+.prow .grow{flex:1}
+.f3{display:grid;grid-template-columns:2fr 1fr 70px 60px;gap:8px;align-items:end}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.stage{height:220px}.f3{grid-template-columns:1fr 1fr}}
+h1,h2,h3,.logo,.price{font-family:"Unbounded","Trebuchet MS",sans-serif}.price{font-size:17px}.prod h3{font-size:15px}.prod .pin.ph{width:100%;height:150px;border-radius:14px;border:0;box-shadow:none}.pin.ph::after{display:none}.ot{width:100%;border-collapse:collapse;margin:8px 0}.ot td{padding:3px 0;border-bottom:1px dashed var(--line)}.ot td:last-child{text-align:right;white-space:nowrap}
+.btn.o,.btn.d{box-shadow:none}.btn.o{color:var(--ink)}.btn:hover{box-shadow:0 10px 22px rgba(255,79,163,.4)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 70%,transparent);margin:0 -18px;padding:12px 18px}
+.hero h1{background:linear-gradient(90deg,var(--ac),var(--ac2),var(--pop),var(--ac));background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:250% center}}
+.stage::before{content:"";position:absolute;inset:8% 8%;background:radial-gradient(circle,rgba(255,79,163,.5),rgba(109,60,255,.25) 45%,transparent 70%);filter:blur(28px);animation:fl 7s ease-in-out infinite}
+h2::after{content:"";display:block;width:56px;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--ac),var(--ac2));margin-top:6px}
+.prod{border-radius:22px;position:relative;overflow:hidden;border-color:transparent;box-shadow:0 6px 18px rgba(109,60,255,.12)}
+.prod::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--pop))}
+.prod:hover{box-shadow:0 18px 38px rgba(109,60,255,.32)}
+.price{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff}
+.tag{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0}
+.cf{position:fixed;top:-30px;z-index:60;pointer-events:none;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="wrap">
+<div id="shop">
+<header><div class="logo">Значок<b>UA</b></div><span class="pill"><i class="dot" id="dot"></i><span id="stat"></span></span>
+<button class="btn o s" data-m="chk">Вже замовив</button><button class="btn o s" data-m="sup">Підтримка</button></header>
+<section class="hero"><div><h1>Значки, які говорять за тебе</h1><p id="desc"></p><button class="btn" id="goCat">Обрати значок</button></div>
+<div class="stage" aria-hidden="true"><div class="pin" style="--c:#2f6bff">🇺🇦</div><div class="pin" style="--c:#ffc531">⭐</div><div class="pin" style="--c:#e8446d">❤️</div><div class="pin" style="--c:#21b573">🌻</div></div></section>
+<h2 id="cat">Каталог</h2><div class="grid" id="grid"></div>
+<footer><span id="ct"></span></footer>
+</div>
+<div id="adm">
+<header><div class="logo">Значок<b>UA</b> · адмін</div><button class="btn o s" id="out">Вийти</button></header>
+<div class="tabs" id="tabs"></div><div id="tab"></div>
+</div></div>
+<div class="bar" id="bar"><span id="barT"></span><button class="btn s" data-m="ord">Оформити</button></div>
+<dialog id="dlg"></dialog>
+<script>
+const ADMIN="vadym.s2015@gmail.com",$=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ST=["Нове","В роботі","Готово","Скасовано"],DL={np:"Нова пошта",pickup:"Самовивіз"},PY={cod:"При отриманні",card:"Переказ на картку"};
+const shrink=f=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,480/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.78))};im.onerror=no;im.src=r.result};r.onerror=no;r.readAsDataURL(f)});
+const od=(o,a)=>`<div class="item"><b>№${o.id}</b><span class="tag">${esc(o.stext||ST[o.status])}</span> <small>${esc(o.date)}</small>${a?`<div>${esc(o.name)} · @${esc(o.tg||"")}${o.phone?" · +"+o.phone:""}</div>`:""}<table class="ot">${o.items.map(i=>`<tr><td>${esc(i.n)}</td><td>${i.q} × ${i.p} грн</td><td>${i.q*i.p} грн</td></tr>`).join("")}<tr><td colspan="2"><b>Разом</b></td><td><b>${o.sum} грн</b></td></tr></table>${o.delivery?`<div>🚚 ${DL[o.delivery]||"—"}${o.delivery==="np"?": "+esc(o.city||"")+(o.address?", "+esc(o.address):""):""}</div><div>💳 ${PY[o.pay]||"—"}</div>`:""}${o.note?`<div>💬 ${esc(o.note)}</div>`:""}<small>${(o.log||[]).map(l=>esc(l.t)+" — "+ST[l.s]).join(" → ")}</small>`;
+let S={products:[{id:1,name:"Тризуб",price:45,emoji:"🇺🇦",color:"#2f6bff",on:1},{id:2,name:"Соняшник",price:40,emoji:"🌻",color:"#e0a800",on:1},{id:3,name:"Серце",price:35,emoji:"❤️",color:"#e8446d",on:1}],orders:[],tickets:[],settings:{open:1,desc:"Яскраві значки з українським характером. Обирай і замовляй.",contacts:"Telegram: @znachokua · +380 00 000 00 00",bot:"",botOn:0}};
+let TOKEN="",KEY=Math.random().toString(36).slice(2);const api=async(u,m="GET",b)=>{const r=await fetch(u,{method:m,headers:{"Content-Type":"application/json",...(TOKEN?{Authorization:"Bearer "+TOKEN}:{})},body:b?JSON.stringify(b):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Помилка сервера");return j};
+const save=()=>{if(TOKEN)api("/api/admin/sync","PUT",{products:S.products,settings:S.settings}).then(r=>{if(r.products&&r.products.some((p,i)=>!S.products[i]||p.id!==S.products[i].id)){S.products=r.products;renderAdm()}}).catch(e=>alert(e.message))};
+let cart={};
+const pin=p=>p.img?`<div class="pin ph" style="background:url('${p.img}') center/cover no-repeat"></div>`:`<div class="pin" style="--c:${esc(p.color)}">${esc(p.emoji)}</div>`;
+const total=()=>S.products.reduce((a,p)=>a+(cart[p.id]||0)*p.price,0);
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+function renderShop(){
+ $("desc").textContent=S.settings.desc;$("ct").textContent=S.settings.contacts;
+ $("stat").textContent=S.settings.open?"Магазин працює":"Зараз закрито";$("dot").className="dot"+(S.settings.open?"":" off");
+ const ps=S.products.filter(p=>p.on);
+ $("grid").innerHTML=ps.length?ps.map((p,i)=>`<div class="prod" style="animation-delay:${i*70}ms">${pin(p)}<h3>${esc(p.name)}</h3><div class="price">${p.price} грн</div><div class="qty"><button class="btn s o" data-q="${p.id}" data-d="-1" aria-label="Менше">−</button><span>${cart[p.id]||0}</span><button class="btn s" data-q="${p.id}" data-d="1" aria-label="Більше">+</button></div></div>`).join(""):'<div class="empty">Товарів поки немає. Заходьте пізніше.</div>';
+ $("bar").classList.toggle("on",count()>0);$("barT").textContent=count()+" шт · "+total()+" грн";
+}
+const dlg=$("dlg");
+function boom(){const e=["🎉","⭐","❤️","💛","✨"];for(let i=0;i<26;i++){const x=document.createElement("span");x.className="cf";x.textContent=e[i%5];x.style.cssText="left:"+Math.random()*100+"vw;animation-delay:"+Math.random()*.6+"s;font-size:"+(18+Math.random()*18)+"px";dlg.appendChild(x);setTimeout(()=>x.remove(),3200)}}
+function open(h){dlg.innerHTML=h+'<div class="row"><button class="btn o s" id="cl">Закрити</button></div>';dlg.showModal();$("cl").onclick=()=>dlg.close()}
+const phoneOk=s=>s.replace(/\D/g,"").length>=10;
+function modal(k){
+ if(k==="ord"){
+  if(!S.settings.open)return open('<h3>Магазин зараз закритий</h3><p>Спробуйте пізніше або напишіть у підтримку.</p>');
+  open(`<h3>Оформлення</h3><p>${count()} шт · ${total()} грн</p><label>Ім’я</label><input id="a1"><label>Нікнейм у Telegram (@username)</label><input id="a2" placeholder="@nickname" autocapitalize="none"><label>Телефон (необов’язково)</label><input id="a4" type="tel" placeholder="+380…"><label>Доставка</label><select id="a5"><option value="np">Нова пошта</option><option value="pickup">Самовивіз</option></select><div id="dl"><label>Місто</label><input id="a6"><label>Відділення або адреса</label><input id="a7"></div><label>Оплата</label><select id="a8"><option value="cod">При отриманні</option><option value="card">Переказ на картку</option></select><label>Коментар</label><textarea id="a3" rows="2"></textarea><label>Посилання на зображення для значка (необов’язково)</label><input id="a9" placeholder="https://…"><div class="row"><button class="btn" id="go">Відправити замовлення</button></div><div class="msg" id="m"></div>`);
+  $("a5").onchange=()=>{$("dl").style.display=$("a5").value==="np"?"block":"none"};$("go").onclick=async()=>{const n=$("a1").value.trim(),tgn=$("a2").value.trim().replace(/^https?:\/\/t\.me\//i,"").replace(/^@/,"");if(!n||!/^@?[A-Za-z0-9_]{5,32}$/.test(tgn)){$("m").textContent=!n?"Вкажіть ім’я.":"Вкажіть нікнейм Telegram латиницею, від 5 символів, наприклад @vadim_2015. Він є в профілі Telegram у розділі «Ім’я користувача».";return}
+   $("go").disabled=true;$("go").textContent="Відправляю…";try{const r=await api("/api/orders","POST",{name:n,tg:tgn,design:$("a9").value,phone:$("a4").value,delivery:$("a5").value,city:$("a6").value,address:$("a7").value,pay:$("a8").value,note:$("a3").value.trim(),items:Object.entries(cart).filter(x=>x[1]>0).map(x=>({id:+x[0],q:x[1]})),key:KEY});cart={};KEY=Math.random().toString(36).slice(2);renderShop();boom();$("go").textContent="Відправлено ✓";$("m").className="msg ok";$("m").textContent="Замовлення №"+r.id+" відправлено. Збережіть номер."+(r.notified?"":" Щоб отримувати сповіщення, відкрийте нашого бота в Telegram і натисніть Start.")}catch(e){$("go").disabled=false;$("go").textContent="Відправити замовлення";$("m").textContent=e.message}};
+ }
+ if(k==="chk"){
+  open('<h3>Вже замовив</h3><label>Ваш нікнейм Telegram</label><input id="a1" placeholder="@nickname" autocapitalize="none"><div class="row"><button class="btn" id="go">Показати</button></div><div class="msg" id="m"></div><div id="r"></div>');
+  $("go").onclick=async()=>{const v=$("a1").value.trim();$("m").textContent="";$("r").innerHTML="";
+   if(/^\S+@\S+\.\S+$/.test(v)){dlg.close();loginDlg(v.toLowerCase());return}
+   
+   try{const r=await api("/api/lookup","POST",{phone:v});if(!r.orders.length){$("m").textContent="Замовлень з цим номером не знайдено.";return}$("r").innerHTML=r.orders.map(o=>od(o)+"</div>").join("")}catch(e){$("m").textContent=e.message}};
+ }
+ if(k==="sup"){
+  open('<h3>Підтримка</h3><label>Ваш нікнейм Telegram</label><input id="a1" placeholder="@nickname" autocapitalize="none"><label>Повідомлення</label><textarea id="a2" rows="3"></textarea><div class="row"><button class="btn" id="go">Надіслати</button></div><div class="msg" id="m"></div>');
+  $("go").onclick=async()=>{if($("a1").value.trim().replace("@","").length<5||!$("a2").value.trim()){$("m").textContent="Вкажіть нікнейм і повідомлення.";return}
+   try{await api("/api/tickets","POST",{tg:$("a1").value,text:$("a2").value.trim()});$("go").disabled=true;$("m").className="msg ok";$("m").textContent="Звернення відправлено. Ми відповімо найближчим часом."}catch(e){$("m").textContent=e.message}};
+ }
+}
+document.addEventListener("click",e=>{
+ const m=e.target.closest("[data-m]");if(m)modal(m.dataset.m);
+ const q=e.target.closest("[data-q]");if(q){const id=+q.dataset.q;cart[id]=Math.max(0,(cart[id]||0)+ +q.dataset.d);renderShop()}
+});
+$("goCat").onclick=()=>$("cat").scrollIntoView({behavior:"smooth"});
+/* admin */
+const TABS=["Товари","Замовлення","Підтримка","Telegram","Налаштування"];let tab=0;
+function loginDlg(){open('<h3>Вхід для працівника</h3><label>Пароль</label><input id="a1" type="password" autocomplete="current-password"><div class="row"><button class="btn" id="go">Увійти</button></div><div class="msg" id="m"></div>');$("go").onclick=async()=>{try{const r=await api("/api/login","POST",{email:ADMIN,password:$("a1").value});TOKEN=r.token;await showAdmin();dlg.close()}catch(e){TOKEN="";$("m").textContent=e.message}}}
+async function showAdmin(){const d=await api("/api/admin/state");S.products=d.products;S.settings=d.settings;S.orders=d.orders;S.tickets=d.tickets;$("shop").style.display="none";$("adm").style.display="block";$("bar").classList.remove("on");renderAdm()}
+$("out").onclick=()=>{TOKEN="";loadShop();$("adm").style.display="none";$("shop").style.display="block";renderShop()};
+function renderAdm(){
+ $("tabs").innerHTML=TABS.map((t,i)=>`<button class="btn o s ${i===tab?"on":""}" data-t="${i}">${t}</button>`).join("");
+ const T=$("tab");
+ if(tab===0){T.innerHTML=`<div class="panel"><b>Новий товар</b><div class="f3"><div><label>Назва</label><input id="pn"></div><div><label>Ціна, грн</label><input id="pp" type="number" min="0"></div><div><label>Смайл</label><input id="pe" value="⭐"></div><div><label>Колір</label><input id="pc" type="color" value="#4b3df2"></div></div><label>Фото товару (необов’язково)</label><input id="pf" type="file" accept="image/*"><div class="row"><button class="btn s" id="padd">Додати товар</button></div><div class="msg" id="pm"></div></div><div class="panel">${S.products.length?S.products.map(p=>`<div class="prow">${pin(p)}<div class="grow"><b>${esc(p.name)}</b><br>${p.price} грн${p.on?"":" · прихований"}</div><input type="number" min="1" value="${p.price}" data-pe="${p.id}" style="width:80px" aria-label="Ціна"><label class="btn o s" style="cursor:pointer">Фото<input type="file" accept="image/*" data-pi="${p.id}" hidden></label><button class="btn o s" data-pt="${p.id}">${p.on?"Сховати":"Показати"}</button><button class="btn d s" data-pd="${p.id}">Видалити</button></div>`).join(""):'<div class="empty">Додайте перший товар.</div>'}</div>`;
+  $("padd").onclick=async()=>{const n=$("pn").value.trim(),pr=+$("pp").value;if(!n||!(pr>0)){$("pm").textContent="Вкажіть назву та ціну більше 0.";return}
+   const f=$("pf").files[0];let img="";if(f){try{img=await shrink(f)}catch(e){$("pm").textContent="Не вдалося прочитати фото";return}}S.products.push({id:Date.now(),name:n,price:pr,emoji:$("pe").value||"⭐",color:$("pc").value,img,on:1});save();renderAdm()};
+ }
+ if(tab===1)T.innerHTML='<div class="panel">'+(S.orders.length?S.orders.slice().reverse().map(o=>od(o,1)+"</div>").join(""):'<div class="empty">Замовлень ще немає.</div>')+"</div>";
+ if(tab===2)T.innerHTML='<div class="panel">'+(S.tickets.length?S.tickets.slice().reverse().map(t=>`<div class="item"><b>@${esc(t.tg||"")}</b> <small>${t.date}</small><div>${esc(t.text)}</div>${t.reply?`<div class="ok">Відповідь: ${esc(t.reply)}</div>`:`<input data-tr="${t.id}" placeholder="Ваша відповідь"><div class="row"><button class="btn s" data-ts="${t.id}">Відповісти</button></div>`}</div>`).join(""):'<div class="empty">Звернень немає.</div>')+"</div>";
+ if(tab===3)T.innerHTML=`<div class="panel"><span class="pill"><i class="dot"></i>Бот підключений</span><p>Сайт працює з вашим ботом через Google Apps Script. Замовлення з сайту потрапляють в аркуш «Замовлення» й приходять працівникам у Telegram з усіма кнопками бота. Товари та ціни спільні з розділом «Товари» бота. Статуси замовлень змінюються в боті.</p></div>`;
+ if(tab===4)T.innerHTML=`<div class="panel"><label>Опис магазину</label><textarea id="sd" rows="2">${esc(S.settings.desc)}</textarea><label>Контакти</label><input id="sc" value="${esc(S.settings.contacts)}"><label><input type="checkbox" id="so" style="width:auto" ${S.settings.open?"checked":""}> Магазин працює</label><div class="row"><button class="btn s" id="ss">Зберегти</button></div><div class="msg ok" id="sm"></div></div>`;
+ 
+ if(tab===4)$("ss").onclick=()=>{S.settings.desc=$("sd").value;S.settings.contacts=$("sc").value;S.settings.open=$("so").checked?1:0;save();$("sm").textContent="Збережено."};
+}
+$("adm").addEventListener("click",e=>{
+ const t=e.target.closest("[data-t]");if(t){tab=+t.dataset.t;renderAdm();return}
+ const d=e.target.closest("[data-pd]");if(d){S.products=S.products.filter(p=>p.id!==+d.dataset.pd);save();renderAdm();return}
+ const g=e.target.closest("[data-pt]");if(g){const p=S.products.find(p=>p.id===+g.dataset.pt);p.on=p.on?0:1;save();renderAdm();return}
+ const ts=e.target.closest("[data-ts]");if(ts){const i=document.querySelector('[data-tr="'+ts.dataset.ts+'"]');if(i.value.trim()){const rp=i.value.trim();api("/api/admin/tickets/"+ts.dataset.ts,"PUT",{reply:rp}).then(()=>{S.tickets.find(x=>x.id===+ts.dataset.ts).reply=rp;renderAdm()}).catch(x=>alert(x.message))}}
+});
+$("adm").addEventListener("change",e=>{const pi=e.target.dataset.pi;if(pi&&e.target.files[0]){shrink(e.target.files[0]).then(img=>{S.products.find(p=>p.id===+pi).img=img;save();renderAdm()}).catch(()=>alert("Не вдалося прочитати фото"));return}const pe=e.target.dataset.pe;if(pe){const v=+e.target.value;if(v>0){S.products.find(p=>p.id===+pe).price=v;save()}return}const s=e.target.dataset.os;if(s){S.orders.find(o=>o.id===+s).status=+e.target.value;api("/api/admin/orders/"+s,"PUT",{status:+e.target.value}).catch(x=>alert(x.message))}});
+function loadShop(){api("/api/shop").then(d=>{S.products=d.products;Object.assign(S.settings,d.settings);renderShop()}).catch(e=>{S.products=[];renderShop();$("grid").innerHTML='<div class="empty">Не вдалося завантажити товари з бота. '+esc(e.message)+"</div>"})}loadShop();
+</script><style>
+.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.prod{padding:0;text-align:left;cursor:pointer}.prod::before{display:none}
+.ph2{aspect-ratio:1;width:100%;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font:800 64px Unbounded,sans-serif}
+.ph2 img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.prod:hover .ph2 img{transform:scale(1.08)}.ph2.big{border-radius:14px;margin-bottom:10px;aspect-ratio:4/3}
+.prod .info{padding:12px 14px 14px}.cnt{margin-left:10px;font-weight:800;color:var(--ac)}.mut{color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font-size:13px;cursor:pointer;transition:.2s}
+.chip:hover{transform:translateY(-2px)}.chip.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(109,60,255,.4)}
+.oc{margin-top:12px;border-radius:18px;background:var(--card);border:1px solid var(--line);padding:4px 14px 12px;animation:in .4s both}
+.thumb{width:52px;height:52px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font:800 20px Unbounded,sans-serif;flex:none}.thumb img{width:100%;height:100%;object-fit:cover}
+.panel{border-radius:18px;box-shadow:0 8px 24px rgba(109,60,255,.08)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;z-index:70;animation:pop .25s;font-weight:700}
+</style>
+<script>
+let ROLE="owner",AT="o",_sig="";
+const STK=[["new","Нове"],["accepted","Прийнято"],["in_work","У роботі"],["in_review","Перевірка"],["ready","Готове"],["done","Виконано"],["cancelled","Скасовано"]];
+function toast(t){const x=document.createElement("div");x.className="toast";x.textContent=t;document.body.appendChild(x);setTimeout(()=>x.remove(),2200)}
+function renderShop(){
+ $("desc").textContent=S.settings.desc;$("ct").textContent=S.settings.contacts;
+ $("stat").textContent=S.settings.open?"Магазин працює":"Зараз закрито";$("dot").className="dot"+(S.settings.open?"":" off");
+ const ps=S.products.filter(p=>p.on),sig=JSON.stringify(ps.map(p=>[p.id,p.name,p.price,(p.img||"").length]));
+ if(sig!==_sig){_sig=sig;$("grid").innerHTML=ps.length?ps.map((p,i)=>`<div class="prod" data-view="${p.id}" tabindex="0" style="animation-delay:${i*60}ms"><div class="ph2">${p.img?`<img src="${p.img}" alt="${esc(p.name)}" loading="lazy">`:esc(p.name.slice(0,1))}</div><div class="info"><h3>${esc(p.name)}</h3><div class="price">${p.price} грн</div><button class="btn s" data-q="${p.id}" data-d="1">В кошик</button><span class="cnt" data-c="${p.id}"></span></div></div>`).join(""):'<div class="empty">Товарів поки немає.</div>'}
+ ps.forEach(p=>{const e=document.querySelector('[data-c="'+p.id+'"]');if(e)e.textContent=cart[p.id]?"× "+cart[p.id]:""});
+ $("bar").classList.toggle("on",count()>0);$("barT").textContent=count()+" шт · "+total()+" грн";
+}
+document.addEventListener("click",e=>{if(e.target.closest("[data-q],[data-m]"))return;const v=e.target.closest("[data-view]");if(!v)return;const p=S.products.find(x=>x.id===+v.dataset.view);if(!p)return;let n=1;
+ open(`<div class="ph2 big">${p.img?`<img src="${p.img}" alt="">`:esc(p.name.slice(0,1))}</div><h3>${esc(p.name)}</h3><div class="price">${p.price} грн</div><p class="mut">${esc(p.desc||"Опис незабаром.")}</p><div class="row"><button class="btn o s" id="mn">−</button><b id="nn">1</b><button class="btn o s" id="mp">+</button><button class="btn" id="ma">Додати в кошик</button></div>`);
+ $("mn").onclick=()=>$("nn").textContent=n=Math.max(1,n-1);$("mp").onclick=()=>$("nn").textContent=++n;$("ma").onclick=()=>{cart[p.id]=(cart[p.id]||0)+n;renderShop();dlg.close();toast("Додано в кошик ✓")}});
+function loginDlg(em){open('<h3>Вхід для працівника</h3><p class="mut">'+esc(em||"")+'</p><label>Пароль</label><input id="a1" type="password" autocomplete="current-password"><div class="row"><button class="btn" id="go">Увійти</button></div><div class="msg" id="m"></div>');
+ $("go").onclick=async()=>{try{const r=await api("/api/login","POST",{email:em,password:$("a1").value});TOKEN=r.token;await showAdmin();dlg.close()}catch(e){TOKEN="";$("m").textContent=e.message}}}
+async function showAdmin(){const d=await api("/api/admin/state");S.products=d.products;S.orders=d.orders;S.tickets=d.tickets;S.settings=d.settings;ROLE=d.role;AT="o";$("shop").style.display="none";$("adm").style.display="block";$("bar").classList.remove("on");renderAdm()}
+function renderAdm(){
+ const T=[["o","Замовлення"],...(ROLE!=="worker"?[["p","Товари"]]:[]),...(ROLE==="owner"?[["w","Працівники"]]:[]),["t","Підтримка"],...(ROLE!=="worker"?[["s","Налаштування"]]:[])];
+ $("tabs").innerHTML=T.map(x=>`<button class="btn o s ${x[0]===AT?"on":""}" data-t2="${x[0]}">${x[1]}</button>`).join("");const E=$("tab");
+ if(AT==="o")E.innerHTML=S.orders.length?S.orders.map(o=>`<div class="oc" data-oc="${o.id}">${od(o,1)}<div class="chips">${STK.map(k=>`<button class="chip ${o.skey===k[0]?"on":""}" data-st="${o.id}:${k[0]}">${k[1]}</button>`).join("")}</div></div></div>`).join(""):'<div class="panel empty">Замовлень ще немає.</div>';
+ if(AT==="p"){E.innerHTML=`<div class="panel"><b>Новий товар</b><div class="f3"><div><label>Назва</label><input id="pn"></div><div><label>Ціна, грн</label><input id="pp" type="number" min="1"></div></div><label>Опис</label><textarea id="pd" rows="2"></textarea><label>Фото</label><input id="pf" type="file" accept="image/*"><div class="row"><button class="btn s" id="padd">Додати товар</button></div><div class="msg" id="pm"></div></div><div class="panel">${S.products.map(p=>`<div class="prow"><div class="thumb">${p.img?`<img src="${p.img}" alt="">`:esc(p.name.slice(0,1))}</div><div class="grow"><b>${esc(p.name)}</b><input data-pdesc="${p.id}" value="${esc(p.desc||"")}" placeholder="Опис"></div><input type="number" min="1" value="${p.price}" data-pe="${p.id}" style="width:80px" aria-label="Ціна"><label class="btn o s" style="cursor:pointer">Фото<input type="file" accept="image/*" data-pi="${p.id}" hidden></label><button class="btn o s" data-pt="${p.id}">${p.on?"Сховати":"Показати"}</button><button class="btn d s" data-pd="${p.id}">✕</button></div>`).join("")||'<div class="empty">Додайте товар.</div>'}</div>`;
+  $("padd").onclick=async()=>{const n=$("pn").value.trim(),pr=+$("pp").value;if(!n||!(pr>0)){$("pm").textContent="Вкажіть назву та ціну.";return}const f=$("pf").files[0];let img="";if(f){try{img=await shrink(f)}catch(x){$("pm").textContent="Фото не прочитано";return}}S.products.push({id:Date.now(),name:n,price:pr,desc:$("pd").value.trim(),img,on:1});save();renderAdm();toast("Товар додано")}}
+ if(AT==="w"){E.innerHTML='<div class="panel"><b>Новий працівник</b><div class="f3"><div><label>Email</label><input id="we"></div><div><label>Ім’я</label><input id="wn"></div></div><div class="f3"><div><label>Пароль (від 6 символів)</label><input id="wp" type="password"></div><div><label>Роль</label><select id="wr"><option value="worker">Працівник (замовлення)</option><option value="manager">Менеджер (+ товари)</option></select></div></div><div class="row"><button class="btn s" id="wadd">Додати</button></div><div class="msg" id="wm"></div></div><div class="panel" id="wl">Завантаження…</div>';loadStaff();
+  $("wadd").onclick=async()=>{try{await api("/api/admin/staff","POST",{email:$("we").value,name:$("wn").value,password:$("wp").value,role:$("wr").value});toast("Працівника додано");renderAdm()}catch(x){$("wm").textContent=x.message}}}
+ if(AT==="t")E.innerHTML='<div class="panel">'+(S.tickets.length?S.tickets.slice().reverse().map(t=>`<div class="item"><b>@${esc(t.tg||"")}</b> <small>${t.date}</small><div>${esc(t.text)}</div>${t.reply?`<div class="ok">Відповідь: ${esc(t.reply)}</div>`:`<input data-tr="${t.id}" placeholder="Ваша відповідь"><div class="row"><button class="btn s" data-ts="${t.id}">Відповісти</button></div>`}</div>`).join(""):'<div class="empty">Звернень немає.</div>')+"</div>";
+ if(AT==="s"){E.innerHTML=`<div class="panel"><label>Опис магазину</label><textarea id="sd" rows="2">${esc(S.settings.desc||"")}</textarea><label>Контакти</label><input id="sc" value="${esc(S.settings.contacts||"")}"><label><input type="checkbox" id="so" style="width:auto" ${S.settings.open?"checked":""}> Магазин працює</label><div class="row"><button class="btn s" id="ss">Зберегти</button></div></div>`;
+  $("ss").onclick=()=>{S.settings.desc=$("sd").value;S.settings.contacts=$("sc").value;S.settings.open=$("so").checked?1:0;save();toast("Збережено ✓")}}
+}
+async function loadStaff(){const r=await api("/api/admin/staff");$("wl").innerHTML=r.staff.length?r.staff.map(s=>`<div class="prow"><div class="grow"><b>${esc(s.name||s.email)}</b><br><small>${esc(s.email)} · ${s.role==="manager"?"Менеджер":"Працівник"}</small></div><button class="btn d s" data-sd="${esc(s.email)}">Видалити</button></div>`).join(""):'<div class="empty">Працівників ще немає.</div>'}
+function mark(id,k,lab){const c=document.querySelector('[data-oc="'+id+'"]');if(!c)return;c.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x.dataset.st===id+":"+k));const t=c.querySelector(".tag");if(t)t.textContent=lab}
+$("adm").addEventListener("click",async e=>{
+ const t2=e.target.closest("[data-t2]");if(t2){AT=t2.dataset.t2;renderAdm();return}
+ const sd=e.target.closest("[data-sd]");if(sd){try{await api("/api/admin/staff/"+encodeURIComponent(sd.dataset.sd),"DELETE");toast("Видалено");loadStaff()}catch(x){toast(x.message)}return}
+ const b=e.target.closest("[data-st]");if(!b)return;const[id,k]=b.dataset.st.split(":"),o=S.orders.find(x=>String(x.id)===id);if(!o||o.skey===k)return;
+ const old=[o.skey,o.stext],lab=STK.find(x=>x[0]===k)[1];o.skey=k;o.stext=lab;mark(id,k,lab);
+ try{await api("/api/admin/orders/"+id,"PUT",{status:k});toast("Статус: "+lab)}catch(er){o.skey=old[0];o.stext=old[1];mark(id,old[0],old[1]);toast(er.message)}});
+$("adm").addEventListener("change",e=>{const d=e.target.dataset.pdesc;if(d){S.products.find(p=>String(p.id)===d).desc=e.target.value;save();toast("Опис збережено")}});
+</script>
+</body></html>
