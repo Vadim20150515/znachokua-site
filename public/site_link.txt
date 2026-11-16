@@ -1,4 +1,0 @@
-Посилання на ваш сайт:
-http://localhost:3000
-
-(Якщо ви розгорнули сайт на хостингу Render, Railway, VPS або Vercel — вставте сюди ваш публічний домен, наприклад: https://znachok-ua.onrender.com)
