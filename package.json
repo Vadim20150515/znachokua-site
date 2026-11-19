@@ -1,11 +1,7 @@
 {
-  "name": "znachokua",
-  "version": "2.5.0",
+  "name": "pos-znachokua",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18"
-  }
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
 }
